@@ -1,11 +1,11 @@
 {
   "name": "turbowalk",
-  "version": "2.0.1",
+  "version": "2.1.0",
   "description": "directory walking, using platform-specific optimizations if available",
   "scripts": {
     "install": "autogypi && node-gyp configure build"
   },
-  "author": "Black Tree Gaming Ltd.",
+  "author": "ftft1885",
   "license": "GPL-3.0",
   "dependencies": {
     "autogypi": "^0.2.2",

@@ -237,7 +237,7 @@ std::vector<Entry> quickFindFiles(const std::wstring &directoryName, LPCWSTR pat
             ? directoryName + std::wstring(info->FileName, nameLength)
             : directoryName + L"\\" + std::wstring(info->FileName, nameLength);
           file.attributes = info->FileAttributes;
-          file.size = info->AllocationSize.QuadPart;
+          file.size = info->EndOfFile.QuadPart;
           file.mtime = static_cast<uint32_t>((info->LastWriteTime.QuadPart - UNIX_EPOCH) / NS100_TO_SECOND);
           if (details) {
             FILE_ALL_INFORMATION *allInfo = (FILE_ALL_INFORMATION*)&detailsBuffer[0];
