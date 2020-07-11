@@ -21,6 +21,9 @@ if (process.platform === 'win32') {
         }
         turbowalk(isDriveLetter(walkPath) ? walkPath : path.normalize(walkPath), (entries) => {
           if (progress !== undefined) {
+            for (let i = 0; i < entries.length; i++) {
+              entries[i].mtime = new Date(entries[i].mtime * 1000) // 和系统保持一致
+            }
             progress(entries);
           }
           return !cancelled;

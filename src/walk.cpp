@@ -233,6 +233,7 @@ std::vector<Entry> quickFindFiles(const std::wstring &directoryName, LPCWSTR pat
             && (wcsncmp(info->FileName, L".", nameLength) != 0)
             && (wcsncmp(info->FileName, L"..", nameLength) != 0)) {
           Entry file;
+          // 可参考 https://github.com/facebook/watchman/blob/master/winbuild/dir.cpp
           file.filePath = (*directoryName.rbegin() == L'\\')
             ? directoryName + std::wstring(info->FileName, nameLength)
             : directoryName + L"\\" + std::wstring(info->FileName, nameLength);
