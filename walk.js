@@ -23,10 +23,11 @@ function walk(target,
         .map((stat, idx) => stat.isFulfilled() && stat.value().isDirectory() ? path.join(target, allFileNames[idx]) : undefined)
         .filter(stat => stat !== undefined);
       callback(res.map((stat, idx) => stat.isFulfilled() ? {
-	filePath: path.join(target, allFileNames[idx]),
-	isDirectory: stat.value().isDirectory(),
-	size: stat.value().size,
-	mtime: stat.value().mtime,
+        filePath: path.join(target, allFileNames[idx]),
+        isDirectory: stat.value().isDirectory(),
+        size: stat.value().size,
+        mtime: stat.value().mtime,
+        mode: stat.value().mode
       } : undefined).filter(iter => iter !== undefined));
       return Promise.mapSeries(subDirs, (subDir) =>
         walk(subDir, callback, options));
